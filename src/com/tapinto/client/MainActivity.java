@@ -1,0 +1,30 @@
+package com.tapinto.client;
+
+import com.tapinto.client.utility.NFCAbstractReadActivity;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.Toast;
+
+public class MainActivity extends NFCAbstractReadActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	protected void onTagRead(String tagMessage) {
+		Toast.makeText(getApplicationContext(), tagMessage, Toast.LENGTH_SHORT).show();
+	}
+
+}
