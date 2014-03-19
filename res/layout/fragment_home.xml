@@ -4,22 +4,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <android.support.v4.app.FragmentTabHost
-        android:id="@+id/tab_options"
+<!--     <android.support.v4.app.FragmentTabHost -->
+<!--         android:id="@+id/tab_options" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" > -->
+
+<!--         <TabWidget -->
+<!--             android:id="@+id/tab_host_widget" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:orientation="horizontal" /> -->
+
+<!--     </android.support.v4.app.FragmentTabHost> -->
+
+<!--         <FrameLayout -->
+<!--             android:id="@+id/options_tab_content" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="match_parent" /> -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/tab_content_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent" >
 
-        <TabWidget
-            android:id="@+id/tab_host_widget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <FrameLayout
-            android:id="@+id/options_tab_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        </android.support.v4.view.ViewPager>
         
-    </android.support.v4.app.FragmentTabHost>
 
 </LinearLayout>
