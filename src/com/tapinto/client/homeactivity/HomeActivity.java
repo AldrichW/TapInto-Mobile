@@ -11,34 +11,50 @@ import com.tapinto.client.homeactivity.homefragment.OptionsTabPagerAdapter;
 import com.tapinto.client.homeactivity.homefragment.ProgramFragment;
 import com.tapinto.client.homeactivity.homefragment.TapFragment;
 import com.tapinto.client.utility.NFCAbstractReadActivity;
+import com.tapinto.client.utility.Utility;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.Configuration;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 
-public class HomeActivity extends NFCAbstractReadActivity implements ActionBar.TabListener {
-	
-	ArrayList<Fragment> optionFragments = new ArrayList<Fragment> ();
+public class HomeActivity extends NFCAbstractReadActivity implements
+		ActionBar.TabListener {
+
 	private ViewPager optionsViewPager;
-	private ActionBar actionBar;
+	private DrawerLayout leftDrawer;
+	private ActionBarDrawerToggle drawerToggle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
+
+		leftDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		Utility.initiateActionBar(this, "Tap");
+		drawerToggle = new ActionBarDrawerToggle(this, leftDrawer,
+				R.drawable.ic_navigation_drawer, R.string.drawer_open,
+				R.string.drawer_close);
+		leftDrawer.setDrawerListener(drawerToggle);
+
 		FragmentManager fm = getSupportFragmentManager();
-		fm.beginTransaction().replace(R.id.content, new HomeFragment()).commit();
-		
+		fm.beginTransaction().replace(R.id.content, new HomeFragment())
+				.commit();
+
 	}
 
 	@Override
@@ -51,7 +67,50 @@ public class HomeActivity extends NFCAbstractReadActivity implements ActionBar.T
 	@Override
 	protected void onTagRead(String tagMessage) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	public void menuButtonClicked() {
+		if (leftDrawer.isDrawerOpen(Gravity.LEFT)) {
+			leftDrawer.closeDrawer(Gravity.LEFT);
+		} else {
+			leftDrawer.openDrawer(Gravity.LEFT);
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_MENU) {
+			menuButtonClicked();
+			return true;
+		}
+
+		// let the system handle all other key events
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		drawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		drawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (drawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		switch (item.getItemId()) {
+		default:
+			break;
+		}
+		return true;
 	}
 
 	@Override
@@ -67,7 +126,7 @@ public class HomeActivity extends NFCAbstractReadActivity implements ActionBar.T
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 	}
-	
+
 	public void setViewPager(ViewPager vp) {
 		optionsViewPager = vp;
 	}
