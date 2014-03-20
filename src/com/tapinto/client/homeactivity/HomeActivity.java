@@ -32,10 +32,9 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class HomeActivity extends NFCAbstractReadActivity implements
-		ActionBar.TabListener {
+public class HomeActivity extends NFCAbstractReadActivity {
 
-	private ViewPager optionsViewPager;
+	public ViewPager optionsViewPager;
 	private DrawerLayout leftDrawer;
 	private ActionBarDrawerToggle drawerToggle;
 
@@ -113,22 +112,22 @@ public class HomeActivity extends NFCAbstractReadActivity implements
 		return true;
 	}
 
-	@Override
-	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-	}
-
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
-		if (optionsViewPager != null)
-			optionsViewPager.setCurrentItem(tab.getPosition());
-	}
-
-	@Override
-	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-	}
-
-	public void setViewPager(ViewPager vp) {
-		optionsViewPager = vp;
-	}
+//	@Override
+//	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+//	}
+//
+//	@Override
+//	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
+//		if (optionsViewPager != null)
+//			optionsViewPager.setCurrentItem(tab.getPosition());
+//	}
+//
+//	@Override
+//	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+//	}
+//
+//	public void setViewPager(ViewPager vp) {
+//		optionsViewPager = vp;
+//	}
 
 }
