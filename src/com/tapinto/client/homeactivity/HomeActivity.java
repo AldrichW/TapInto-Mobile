@@ -31,6 +31,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class HomeActivity extends NFCAbstractReadActivity {
 
@@ -66,7 +67,7 @@ public class HomeActivity extends NFCAbstractReadActivity {
 	@Override
 	protected void onTagRead(String tagMessage) {
 		// TODO Auto-generated method stub
-
+		Toast.makeText(getApplicationContext(), tagMessage, Toast.LENGTH_SHORT).show();
 	}
 
 	public void menuButtonClicked() {
