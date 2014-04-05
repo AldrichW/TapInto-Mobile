@@ -6,9 +6,7 @@ import com.tapinto.client.R;
 import com.tapinto.client.R.layout;
 import com.tapinto.client.R.menu;
 import com.tapinto.client.homeactivity.homefragment.HomeFragment;
-import com.tapinto.client.homeactivity.homefragment.MapFragment;
 import com.tapinto.client.homeactivity.homefragment.OptionsTabPagerAdapter;
-import com.tapinto.client.homeactivity.homefragment.ProgramFragment;
 import com.tapinto.client.homeactivity.homefragment.TapFragment;
 import com.tapinto.client.utility.NFCAbstractReadActivity;
 import com.tapinto.client.utility.Utility;
@@ -119,23 +117,5 @@ public class HomeActivity extends NFCAbstractReadActivity {
 		}
 		return true;
 	}
-
-//	@Override
-//	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-//	}
-//
-//	@Override
-//	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
-//		if (optionsViewPager != null)
-//			optionsViewPager.setCurrentItem(tab.getPosition());
-//	}
-//
-//	@Override
-//	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-//	}
-//
-//	public void setViewPager(ViewPager vp) {
-//		optionsViewPager = vp;
-//	}
 
 }

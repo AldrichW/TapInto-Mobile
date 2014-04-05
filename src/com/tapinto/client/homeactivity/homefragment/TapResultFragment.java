@@ -27,17 +27,6 @@ public class TapResultFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_tap_result, container, false);
 		sv = (ScrollView) rootView.findViewById(R.id.content_scroll_view);
 		
-		TextView titleView = (TextView)rootView.findViewById(R.id.title_view);
-		titleView.setText(title);
-		
-		LinearLayout holder = (LinearLayout)rootView.findViewById(R.id.scroll_view_holder);
-		if (contentPanels.size() > 0) {
-			holder.removeAllViews();
-		}
-		for (int i = 0; i < contentPanels.size(); i ++) {
-			holder.addView(contentPanels.get(i));
-		}
-		
 		return rootView;
 	}
 	
@@ -55,6 +44,9 @@ public class TapResultFragment extends Fragment {
 		for (int i = 0; i < contentPanels.size(); i ++) {
 			holder.addView(contentPanels.get(i));
 		}
+		
+		LinearLayout titleWrapper = (LinearLayout) getActivity().findViewById(R.id.title_wrapper);
+		titleWrapper.setVisibility(LinearLayout.VISIBLE);
 	}
 
 }

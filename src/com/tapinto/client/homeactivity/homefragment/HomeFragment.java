@@ -24,31 +24,23 @@ import android.widget.TabHost.TabSpec;
 
 public class HomeFragment extends Fragment {
 	
-	TabHost fth;
-	ArrayList<Fragment> optionFragments = new ArrayList<Fragment> ();
-	ViewPager optionsViewPager;
-	private ActionBar actionBar;
-	private HomeActivity activity;
+	private TabHost fth;
+	private ArrayList<Fragment> optionFragments = new ArrayList<Fragment> ();
+	private ViewPager optionsViewPager;
+	
+	final private static int TAB_TAP = 0;
+	final private static int TAB_TAP_RESULT = 1;
 	
 	@Override
 	public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
 		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 		
-		activity = (HomeActivity) getActivity();
-		
 		fth = (TabHost) rootView.findViewById(R.id.tab_options);
 		fth.setup();
 		addTab(getActivity(), fth, fth.newTabSpec("tap").setIndicator("Tap"));
 		addTab(getActivity(), fth, fth.newTabSpec("tap_result").setIndicator("Content"));
-//		addTab(getActivity(), fth, fth.newTabSpec("program").setIndicator("Program"));
-//		addTab(getActivity(), fth, fth.newTabSpec("map").setIndicator("Map"));
-//		fth.setup(getActivity(), getActivity().getSupportFragmentManager(), R.id.options_tab_content);
-//		fth.addTab(fth.newTabSpec("tap").setIndicator("Tap"), TapFragment.class, null);
-//		fth.addTab(fth.newTabSpec("program").setIndicator("Program"), ProgramFragment.class, null);
-//		fth.addTab(fth.newTabSpec("map").setIndicator("Map"), MapFragment.class, null);
 		
-//		fth.setCurrentTab(index);
 		fth.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String arg0) {
@@ -56,22 +48,13 @@ public class HomeFragment extends Fragment {
 			}
 		});
 		
-//		activity = (HomeActivity) getActivity();
-//		
 		optionFragments.add(new TapFragment());
 		optionFragments.add(new TapResultFragment());
-//		optionFragments.add(new ProgramFragment());
-//		optionFragments.add(new MapFragment());
 //		
 		optionsViewPager = (ViewPager) rootView.findViewById(R.id.tab_content_viewpager);
-//		actionBar = activity.getSupportActionBar();
 		OptionsTabPagerAdapter optionsTabPagerAdapter = new OptionsTabPagerAdapter(getActivity().getSupportFragmentManager());
 		optionsTabPagerAdapter.initiate(optionFragments);
 		optionsViewPager.setAdapter(optionsTabPagerAdapter);
-//		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//		actionBar.addTab(actionBar.newTab().setText("Tap").setTabListener(activity));
-//		actionBar.addTab(actionBar.newTab().setText("Program").setTabListener(activity));
-//		actionBar.addTab(actionBar.newTab().setText("Map").setTabListener(activity));
 		optionsViewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
@@ -82,20 +65,18 @@ public class HomeFragment extends Fragment {
 			@Override
 			public void onPageSelected(int position) {
 				fth.setCurrentTab(position);
-//				actionBar.setSelectedNavigationItem(position);
 			}
 		});
-//		activity.setViewPager(optionsViewPager);
 		
 		return rootView;
 		
 	}
 	
 	public void onTagRead(String tagMessage) {
-		if (fth.getCurrentTab() == 0) {
-			optionsViewPager.setCurrentItem(1);
-			fth.setCurrentTab(1);
-			((TapResultFragment)optionFragments.get(1)).initiate(tagMessage);
+		if (fth.getCurrentTab() == TAB_TAP) {
+			((TapResultFragment)optionFragments.get(TAB_TAP_RESULT)).initiate(tagMessage);
+			fth.setCurrentTab(TAB_TAP_RESULT);
+			optionsViewPager.setCurrentItem(TAB_TAP_RESULT);
 		}
 	}
 	
