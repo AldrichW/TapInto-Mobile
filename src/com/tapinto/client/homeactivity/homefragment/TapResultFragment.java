@@ -16,8 +16,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class TapResultFragment extends Fragment {
-	
-	private String title;
+//	
+//	private String title;
 	private ArrayList<View> contentPanels = new ArrayList<View>();
 	private ScrollView sv;
 	
@@ -33,11 +33,11 @@ public class TapResultFragment extends Fragment {
 	public void initiate(String tagMessage) {
 		
 		sv.scrollTo(0, 0);
-		title = Backend.getTitle(tagMessage);
+//		title = Backend.getTitle(tagMessage);
 		contentPanels = Backend.getContent(getActivity(), tagMessage);
 		
-		TextView titleView = (TextView)getActivity().findViewById(R.id.title_view);
-		titleView.setText(title);
+//		TextView titleView = (TextView)getActivity().findViewById(R.id.title_view);
+//		titleView.setText(title);
 		
 		LinearLayout holder = (LinearLayout) getActivity().findViewById(R.id.scroll_view_holder);
 		holder.removeAllViews();
@@ -45,8 +45,8 @@ public class TapResultFragment extends Fragment {
 			holder.addView(contentPanels.get(i));
 		}
 		
-		LinearLayout titleWrapper = (LinearLayout) getActivity().findViewById(R.id.title_wrapper);
-		titleWrapper.setVisibility(LinearLayout.VISIBLE);
+//		LinearLayout titleWrapper = (LinearLayout) getActivity().findViewById(R.id.title_wrapper);
+//		titleWrapper.setVisibility(LinearLayout.VISIBLE);
 	}
 
 }

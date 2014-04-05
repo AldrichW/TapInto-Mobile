@@ -5,52 +5,24 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/title_wrapper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="1dp"
-        android:visibility="invisible"
-        android:background="@android:color/black" >
-        
-        <TextView
-	        android:id="@+id/title_view"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center"
-	        android:textSize="22sp"
-	        android:textStyle="bold"
-	        android:padding="10dp"
-	        android:background="@android:color/white"
-	        android:text="" />
-        
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/content_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:id="@+id/scroll_view_holder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp"
             android:orientation="vertical" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                 >
-                
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Please tap a tag to see content!"/>
-                
-            </RelativeLayout>
+     
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop = "200dp"
+            android:gravity="center"
+            android:text="Please tap a tag to see content!"/>
             
         </LinearLayout>
     </ScrollView>
