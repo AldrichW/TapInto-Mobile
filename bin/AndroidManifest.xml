@@ -17,6 +17,7 @@
         android:theme="@style/Theme.AppCompat.Light" >
         <activity
             android:name="com.tapinto.client.homeactivity.HomeActivity"
+            android:launchMode="singleInstance"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>

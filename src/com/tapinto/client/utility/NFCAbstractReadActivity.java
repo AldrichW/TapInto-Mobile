@@ -1,5 +1,6 @@
 package com.tapinto.client.utility;
 
+
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ public abstract class NFCAbstractReadActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_nfcabstract_read);
 		
 		context = getApplicationContext();
 		nfcAdapter = NfcAdapter.getDefaultAdapter(context);
@@ -78,7 +78,7 @@ public abstract class NFCAbstractReadActivity extends ActionBarActivity {
 				for (int i = 0; i < payload.length; i ++) {
 					result.append((char)payload[i]);
 				}
-				onTagRead (result.toString());
+				onTagRead(result.toString());
 			}
 		}
 	}

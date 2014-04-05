@@ -13,6 +13,7 @@ import com.tapinto.client.utility.Utility;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -42,6 +44,7 @@ public class HomeActivity extends NFCAbstractReadActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(null);
+
 		setContentView(R.layout.activity_home);
 
 		leftDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
