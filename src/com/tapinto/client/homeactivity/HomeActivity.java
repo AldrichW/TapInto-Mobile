@@ -38,10 +38,12 @@ public class HomeActivity extends NFCAbstractReadActivity {
 	public ViewPager optionsViewPager;
 	private DrawerLayout leftDrawer;
 	private ActionBarDrawerToggle drawerToggle;
+	private Fragment currentFrag;
+	private boolean canScan = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(null);
 		setContentView(R.layout.activity_home);
 
 		leftDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -51,9 +53,11 @@ public class HomeActivity extends NFCAbstractReadActivity {
 				R.string.drawer_close);
 		leftDrawer.setDrawerListener(drawerToggle);
 
+		HomeFragment hf = new HomeFragment();
 		FragmentManager fm = getSupportFragmentManager();
-		fm.beginTransaction().replace(R.id.content, new HomeFragment())
+		fm.beginTransaction().replace(R.id.content, hf)
 				.commit();
+		currentFrag = hf;
 
 	}
 
@@ -68,6 +72,9 @@ public class HomeActivity extends NFCAbstractReadActivity {
 	protected void onTagRead(String tagMessage) {
 		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(), tagMessage, Toast.LENGTH_SHORT).show();
+		if (canScan) {
+			((HomeFragment)currentFrag).onTagRead(tagMessage);
+		}
 	}
 
 	public void menuButtonClicked() {

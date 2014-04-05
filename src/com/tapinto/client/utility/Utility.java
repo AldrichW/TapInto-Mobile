@@ -1,5 +1,7 @@
 package com.tapinto.client.utility;
 
+import com.tapinto.client.R;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 
@@ -12,7 +14,7 @@ public static ActionBar initiateActionBar (ActionBarActivity activity, String ti
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setTitle(title);
 //		actionBar.setSubtitle("The Cannon");
-//		actionBar.setIcon(R.drawable.icon);
+		actionBar.setIcon(R.drawable.logo);
 		
 		return actionBar;
 	}

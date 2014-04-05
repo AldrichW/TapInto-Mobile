@@ -40,8 +40,9 @@ public class HomeFragment extends Fragment {
 		fth = (TabHost) rootView.findViewById(R.id.tab_options);
 		fth.setup();
 		addTab(getActivity(), fth, fth.newTabSpec("tap").setIndicator("Tap"));
-		addTab(getActivity(), fth, fth.newTabSpec("program").setIndicator("Program"));
-		addTab(getActivity(), fth, fth.newTabSpec("map").setIndicator("Map"));
+		addTab(getActivity(), fth, fth.newTabSpec("tap_result").setIndicator("Content"));
+//		addTab(getActivity(), fth, fth.newTabSpec("program").setIndicator("Program"));
+//		addTab(getActivity(), fth, fth.newTabSpec("map").setIndicator("Map"));
 //		fth.setup(getActivity(), getActivity().getSupportFragmentManager(), R.id.options_tab_content);
 //		fth.addTab(fth.newTabSpec("tap").setIndicator("Tap"), TapFragment.class, null);
 //		fth.addTab(fth.newTabSpec("program").setIndicator("Program"), ProgramFragment.class, null);
@@ -58,8 +59,9 @@ public class HomeFragment extends Fragment {
 //		activity = (HomeActivity) getActivity();
 //		
 		optionFragments.add(new TapFragment());
-		optionFragments.add(new ProgramFragment());
-		optionFragments.add(new MapFragment());
+		optionFragments.add(new TapResultFragment());
+//		optionFragments.add(new ProgramFragment());
+//		optionFragments.add(new MapFragment());
 //		
 		optionsViewPager = (ViewPager) rootView.findViewById(R.id.tab_content_viewpager);
 //		actionBar = activity.getSupportActionBar();
@@ -87,6 +89,14 @@ public class HomeFragment extends Fragment {
 		
 		return rootView;
 		
+	}
+	
+	public void onTagRead(String tagMessage) {
+		if (fth.getCurrentTab() == 0) {
+			optionsViewPager.setCurrentItem(1);
+			fth.setCurrentTab(1);
+			((TapResultFragment)optionFragments.get(1)).initiate(tagMessage);
+		}
 	}
 	
 	private void addTab(Activity activity, TabHost tabHost, TabHost.TabSpec tabSpec) {
